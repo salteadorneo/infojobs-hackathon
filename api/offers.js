@@ -1,11 +1,15 @@
 const infoJobsToken = process.env.INFOJOBS_TOKEN
 
 export default async function handler (request, response) {
-  const { province } = request.query
+  const { province, page } = request.query
 
   const url = new URL('https://api.infojobs.net/api/7/offer')
-  url.searchParams.append('province', province)
-  // url.searchParams.append('maxResults', 2)
+  if (province) {
+    url.searchParams.append('province', province)
+  }
+  // url.searchParams.append('maxResults', 50)
+  url.searchParams.append('page', page)
+  url.searchParams.append('teleworking', 'trabajo-solo-presencial')
 
   const res = await fetch(url, {
     headers: {
@@ -16,20 +20,12 @@ export default async function handler (request, response) {
 
   const { items } = await res.json()
 
-  const provinceFilter = province.toLowerCase()
-
   const listOfOffers = items?.map(item => {
-    const { id, title, city, province, experienceMin, link } = item
-
-    // if (province.value.toLowerCase() !== provinceFilter) return false
-
     return {
-      id,
-      title,
-      city,
-      province: province.value,
-      experienceMin: experienceMin.value,
-      link
+      ...item,
+      province: item.province.value,
+      latitude: 40,
+      longitude: -3
     }
   }).filter(Boolean)
 
