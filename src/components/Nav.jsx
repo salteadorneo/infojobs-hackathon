@@ -4,7 +4,7 @@ export default function Nav () {
   return (
     <ul className='flex items-center gap-8'>
       <li>
-        <a href='#'>
+        <a href='/'>
           <Logo />
         </a>
       </li>

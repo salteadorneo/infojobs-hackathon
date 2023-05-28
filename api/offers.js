@@ -7,7 +7,7 @@ export default async function handler (request, response) {
   if (province) {
     url.searchParams.append('province', province)
   }
-  // url.searchParams.append('maxResults', 50)
+  url.searchParams.append('maxResults', 50)
   url.searchParams.append('page', page)
   url.searchParams.append('teleworking', 'trabajo-solo-presencial')
 
