@@ -28,7 +28,7 @@ export default function Search () {
       <div className='rounded-[6px] bg-[rgba(22,125,183,0.7)] p-8'>
         <form onSubmit={handleSearch}>
           <fieldset>
-            <ul className='flex items-end gap-2'>
+            <ul className='flex flex-col sm:flex-row items-end gap-2'>
               <li className='w-full'>
                 <label htmlFor='q' className='block text-white'>Busco ofertas de...</label>
                 <input
