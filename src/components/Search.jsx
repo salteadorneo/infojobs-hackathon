@@ -23,7 +23,12 @@ export default function Search () {
     const formData = new FormData(e.target)
     const q = formData.get('q')
 
-    window.location.href = `/${province}?q=${q}`
+    const url = new URL(`/${province}`, window.location.origin)
+    if (q) {
+      url.searchParams.set('q', q)
+    }
+
+    window.location.href = url
   }
   return (
     <div className='py-2 mt-11'>
