@@ -8,6 +8,9 @@ export default function Search () {
   const [province, setProvince] = useState(params?.province ?? '')
   const [provinces, setProvinces] = useState([])
 
+  const queryString = window.location.search
+  const sp = new URLSearchParams(queryString)
+
   useEffect(() => {
     fetch('/api/provinces').then((res) => res.json()).then((data) => {
       setProvinces(data)
@@ -32,8 +35,17 @@ export default function Search () {
               <li className='w-full'>
                 <label htmlFor='q' className='block text-white'>Busco ofertas de...</label>
                 <input
-                  type='text' placeholder='Puesto, empresa o palabra clave' name='q' id='q' maxLength='200' data-vars='{&quot;autocompleteEnabled&quot;:true,&quot;autocompleteStrategy&quot;:&quot;&quot;,&quot;maxAutocompleteItemsDesktop&quot;:5,&quot;maxAutocompleteItemsMobile&quot;:3,&quot;urlAutocomplete&quot;:&quot;https://ms-autocomplete.spain.advgo.net/v1/search&quot;}'
-                  className='w-full p-2' autoComplete='off' role='textbox' aria-autocomplete='list' aria-haspopup='true'
+                  type='text'
+                  placeholder='Puesto, empresa o palabra clave'
+                  name='q'
+                  id='q'
+                  maxLength='200'
+                  className='w-full p-2'
+                  autoComplete='off'
+                  role='textbox'
+                  aria-autocomplete='list'
+                  aria-haspopup='true'
+                  defaultValue={sp.get('q') ?? ''}
                 />
                 <div className='input-drop-down' />
               </li>

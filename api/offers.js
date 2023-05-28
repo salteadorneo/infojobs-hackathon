@@ -1,11 +1,14 @@
 const infoJobsToken = process.env.INFOJOBS_TOKEN
 
 export default async function handler (request, response) {
-  const { province, page } = request.query
+  const { province, page, q } = request.query
 
   const url = new URL('https://api.infojobs.net/api/7/offer')
   if (province) {
     url.searchParams.append('province', province)
+  }
+  if (q) {
+    url.searchParams.append('q', q)
   }
   url.searchParams.append('maxResults', 50)
   url.searchParams.append('page', page)

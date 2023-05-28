@@ -2,6 +2,7 @@ import GoogleMapReact from 'google-map-react'
 import { useEffect, useRef, useState } from 'react'
 import useSupercluster from 'use-supercluster'
 import { styles } from '../consts'
+import Loader from './Loader'
 
 const DEFAULT_IMAGE = 'https://components.infojobs.com/statics/images/pic-company-logo.png'
 
@@ -35,9 +36,11 @@ export default function Map ({ center, offers = [] }) {
   useEffect(() => {
     if (center && mapRef.current) {
       setDetail(null)
-      // setZoom(10)
 
-      // mapRef.current.setZoom(10)
+      if (mapRef.current.getZoom() < 10) {
+        setZoom(10)
+        mapRef.current.setZoom(10)
+      }
 
       const { lat, lng } = center || { lat: 0, lng: 0 }
       mapRef.current.panTo({ lat, lng })
@@ -59,10 +62,15 @@ export default function Map ({ center, offers = [] }) {
           </div>
         </a>
       )}
+      {offers.length === 0 && (
+        <div className='absolute inset-0 grid place-content-center w-full h-full z-20 bg-white/50'>
+          <Loader />
+        </div>
+      )}
       <GoogleMapReact
         bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY }}
         defaultCenter={{ lat: 40, lng: -3 }}
-        defaultZoom={10}
+        defaultZoom={6}
         options={{
           fullscreenControl: false,
           styles

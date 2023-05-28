@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
 import Map from '../components/Map'
 
+const GEOAPIFY_API = import.meta.env.VITE_GEOAPIFY_API
+
 // eslint-disable-next-line react/prop-types
 export default function Province ({ params }) {
   // eslint-disable-next-line react/prop-types
   const { province } = params
+
+  const queryString = window.location.search
+  const sp = new URLSearchParams(queryString)
 
   const [offers, setOffers] = useState([])
 
@@ -22,6 +27,7 @@ export default function Province ({ params }) {
   useEffect(() => {
     setOffers([])
     getOffers({ province })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [province])
 
   async function getOffers ({ province, page = 1 }) {
@@ -34,7 +40,7 @@ export default function Province ({ params }) {
         const { lat, lng } = JSON.parse(localStorage.getItem(province)) || { lat: 0, lng: 0 }
         setCenter({ lat, lng })
       } else {
-        const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${province},Spain&apiKey=61b7eee1ab8347ee889583cc7342a5a4`).then((res) => res.json())
+        const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${province},Spain&apiKey=${GEOAPIFY_API}`).then((res) => res.json())
 
         const { lat, lon } = response.features[0].properties
         setCenter({ lat, lng: lon })
@@ -44,7 +50,16 @@ export default function Province ({ params }) {
       }
     }
 
-    const offers = await fetch(`/api/offers?province=${province}&page=${page}`).then((res) => res.json())
+    const url = new URL('/api/offers', window.location.origin)
+    url.searchParams.set('province', province)
+    url.searchParams.set('page', page)
+
+    const q = sp.get('q')
+    if (q) {
+      url.searchParams.set('q', q)
+    }
+
+    const offers = await fetch(url).then((res) => res.json())
 
     const cities = offers.map((offer) => `${offer.city}, ${offer.province}, Spain`)
     const uniqueCities = [...new Set(cities)]
@@ -54,32 +69,15 @@ export default function Province ({ params }) {
 
       if (localStorageCities.includes(city)) {
         const { lat, lng } = JSON.parse(localStorage.getItem(city)) || { lat: 0, lng: 0 }
-        const sameCity = offers.filter((offer) => `${offer.city}, ${offer.province}, Spain` === city)
-        sameCity.forEach((item, i) => {
-          const rand1 = Math.random() < 0.5 ? -1 : 1
-          const rand2 = Math.random() < 0.5 ? -1 : 1
-          const num1 = Math.random() / 100 * rand1
-          const num2 = Math.random() / 100 * rand2
-          item.latitude = lat + num1
-          item.longitude = lng + num2
-        })
+        saveLocation(offers, city, lat, lng)
         continue
       }
 
-      const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${city}&apiKey=61b7eee1ab8347ee889583cc7342a5a4`).then((res) => res.json())
+      const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${city}&apiKey=${GEOAPIFY_API}`).then((res) => res.json())
+      const { lat, lon: lng } = response.features?.[0]?.properties || { lat: 0, lon: 0 }
+      saveLocation(offers, city, lat, lng)
 
-      const { lat, lon } = response.features?.[0]?.properties || { lat: 0, lon: 0 }
-      const sameCity = offers.filter((offer) => `${offer.city}, ${offer.province}, Spain` === city)
-      sameCity.forEach((item, i) => {
-        const rand1 = Math.random() < 0.5 ? -1 : 1
-        const rand2 = Math.random() < 0.5 ? -1 : 1
-        const num1 = Math.random() / 100 * rand1
-        const num2 = Math.random() / 100 * rand2
-        item.latitude = lat + num1
-        item.longitude = lon + num2
-      })
-
-      localStorage.setItem(city, JSON.stringify({ lat, lng: lon }))
+      localStorage.setItem(city, JSON.stringify({ lat, lng }))
       localStorage.setItem('cities', JSON.stringify([...localStorageCities, city]))
     }
 
@@ -88,6 +86,18 @@ export default function Province ({ params }) {
     if (offers.length > 0 && page < 5) {
       setPage(page + 1)
     }
+  }
+
+  function saveLocation (offers, city, lat, lng) {
+    const sameCity = offers.filter((offer) => `${offer.city}, ${offer.province}, Spain` === city)
+    sameCity.forEach(item => {
+      const rand1 = Math.random() < 0.5 ? -1 : 1
+      const rand2 = Math.random() < 0.5 ? -1 : 1
+      const num1 = Math.random() / 100 * rand1
+      const num2 = Math.random() / 100 * rand2
+      item.latitude = lat + num1
+      item.longitude = lng + num2
+    })
   }
 
   return (
