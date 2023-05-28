@@ -62,11 +62,15 @@ export default function Map ({ center, offers = [] }) {
         bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY }}
         defaultCenter={{ lat: 40, lng: -3 }}
         defaultZoom={6}
+        options={{
+          fullscreenControl: false
+        }}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map }) => {
           mapRef.current = map
         }}
         onChange={({ zoom, bounds }) => {
+          setDetail(null)
           setZoom(zoom)
           setBounds([
             bounds.nw.lng,

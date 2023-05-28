@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Logo } from './Logo'
 import Map from './components/Map'
+import Nav from './components/Nav'
+import { provincesByPopularity } from './consts'
 
 function App () {
   const [province, setProvince] = useState('')
@@ -28,6 +29,8 @@ function App () {
   }, [province])
 
   async function getOffers ({ province, page = 1 }) {
+    if (province === '') return
+
     if (province) {
       const localStorageCities = localStorage.getItem('cities') ? JSON.parse(localStorage.getItem('cities')) : []
 
@@ -57,8 +60,8 @@ function App () {
         const { lat, lng } = JSON.parse(localStorage.getItem(city)) || { lat: 0, lng: 0 }
         const sameCity = offers.filter((offer) => `${offer.city}, ${offer.province}, Spain` === city)
         sameCity.forEach((item, i) => {
-          item.latitude = lat + i * Math.random() * 10000
-          item.longitude = lng + i * Math.random() * 10000
+          item.latitude = lat + i * Math.random() * 5000
+          item.longitude = lng + i * Math.random() * 5000
         })
         continue
       }
@@ -68,8 +71,8 @@ function App () {
       const { lat, lon } = response.features[0].properties
       const sameCity = offers.filter((offer) => `${offer.city}, ${offer.province}, Spain` === city)
       sameCity.forEach((item, i) => {
-        item.latitude = lat + i * Math.random() * 10000
-        item.longitude = lon + i * Math.random() * 10000
+        item.latitude = lat + i * Math.random() * 5000
+        item.longitude = lon + i * Math.random() * 5000
       })
 
       localStorage.setItem(city, JSON.stringify({ lat, lng: lon }))
@@ -85,35 +88,9 @@ function App () {
 
   return (
     <>
-      <header className='py-7 bg-[#f2f2f2] bg-cover' style={{ backgroundImage: 'url(/bg-home-full-tv.jpg)' }}>
+      <header className='py-7 bg-[#f2f2f2] bg-cover bg-center' style={{ backgroundImage: 'url(/bg-home-full-tv.jpg)' }}>
         <div className='max-w-[1280px] mx-auto px-6'>
-          <ul className='flex items-center gap-8'>
-            <li>
-              <a href='#'>
-                <Logo />
-              </a>
-            </li>
-            <li>
-              <a href='#' id='menu_tab_25' title='Buscar empleo' data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}' data-track='Search Offers Main Menu Clicked'>
-                Buscar empleo
-              </a>
-            </li>
-            <li>
-              <a href='#' id='menu_tab_33' title='Buscar empresas' data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}' data-track='Search Companies Main Menu Clicked'>
-                Buscar empresas
-              </a>
-            </li>
-            <li>
-              <a href='#' id='menu_tab_34' title='Salarios' data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}' data-track='Salary Main Menu Clicked'>
-                Salarios
-              </a>
-            </li>
-            <li>
-              <a href='#' id='menu_tab_2' title='Qué puedo estudiar para trabajar - Formación InfoJobs' data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}' data-track='Training Main Menu Clicked'>
-                Formación
-              </a>
-            </li>
-          </ul>
+          <Nav />
           <div className='py-2 mt-11'>
             <h1 className='text-[42px] font-medium mb-4'>Siempre a mejor</h1>
             <div className='rounded-[6px] bg-[rgba(22,125,183,0.7)] p-8'>
@@ -139,10 +116,9 @@ function App () {
                       >
                         <option value='0' selected='true'>Toda España</option>
                         <optgroup label='Más comunes'>
-                          <option value='madrid'>Madrid</option>
-                          <option value='barcelona'>Barcelona</option>
-                          <option value='valencia-valencia'>Valencia/València</option>
-                          <option value='sevilla'>Sevilla</option>
+                          {provincesByPopularity.map((province) => (
+                            <option key={province.key} value={province.key}>{province.value}</option>
+                          ))}
                         </optgroup>
                         <optgroup label='Todas'>
                           {provinces.filter(p => p.key !== 'seleccionar').map((province) => (
@@ -154,7 +130,7 @@ function App () {
                     <li className=''>
                       <button
                         type='submit'
-                        className='text-white bg-[#ff6340] rounded px-5 py-2 uppercase'
+                        className='text-white bg-[#ff6340] rounded px-10 py-2 uppercase'
                         title='Buscar trabajo con mis preferencias'
                         data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}'
                         data-track='Search Offers Clicked'
@@ -172,8 +148,23 @@ function App () {
       </header>
 
       <main className='max-w-[1280px] mx-auto p-6'>
+        {province === '' && (
+          <>
+            <h2 className='text-xl font-semibold mb-4'>Trabaja cerca de casa</h2>
+            <div className='grid grid-cols-4 gap-4'>
+              {
+              provincesByPopularity.map((province) => (
+                <div key={province.key} className='group space-y-2' onClick={() => setProvince(province.key)}>
+                  <img src={`/images/${province.key}.jpg`} alt={province.value} className='aspect-square object-cover rounded-[6px]' />
+                  <span className='block text-[#167db7] uppercase font-semibold text-center group-hover:underline'>{province.value}</span>
+                </div>
+              ))
+            }
+            </div>
+          </>
+        )}
         <div style={{ height: '600px', width: '100%' }} className='relative rounded-[6px] overflow-hidden'>
-          {offers.length > 0 && (
+          {province !== '' && (
             <Map center={center} offers={offers} />
           )}
         </div>
