@@ -33,6 +33,8 @@ export default function Province ({ params }) {
   async function getOffers ({ province, page = 1 }) {
     if (province === '') return
 
+    if (province === 'espana') province = ''
+
     if (province) {
       const localStorageCities = localStorage.getItem('cities') ? JSON.parse(localStorage.getItem('cities')) : []
 

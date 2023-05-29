@@ -5,7 +5,7 @@ import { provincesByPopularity } from '../consts'
 export default function Search () {
   const [, params] = useRoute('/:province')
 
-  const [province, setProvince] = useState(params?.province ?? '')
+  const [province, setProvince] = useState(params?.province ?? 'espana')
   const [provinces, setProvinces] = useState([])
 
   const queryString = window.location.search
@@ -25,14 +25,14 @@ export default function Search () {
 
     const url = new URL(`/${province}`, window.location.origin)
     if (q) {
-      url.searchParams.set('q', q)
+      url.searchParams.set('q', q.replace(/ñ/g, 'n'))
     }
 
     window.location.href = url
   }
   return (
     <div className='py-2 mt-11'>
-      <h1 className='text-[42px] font-medium mb-4'>Siempre a mejor</h1>
+      <h1 className='text-[42px] font-medium mb-4'>Trabaja cerca de casa</h1>
       <div className='rounded-[6px] bg-[rgba(22,125,183,0.7)] p-8'>
         <form onSubmit={handleSearch}>
           <fieldset>
