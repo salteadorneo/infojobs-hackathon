@@ -52,7 +52,7 @@ export default function Map ({ center, offers = [] }) {
   return (
     <>
       {detail && (
-        <a href={detail.link} target='_blank' className='absolute top-2 left-2 z-10 shadow-lg w-[500px] bg-white p-4 rounded flex gap-4' rel='noreferrer'>
+        <a href={detail.link} target='_blank' className='absolute top-2 left-2 z-10 shadow-lg w-full max-w-md bg-white p-4 rounded flex gap-4' rel='noreferrer'>
           <img src={detail.author?.logoUrl || DEFAULT_IMAGE} alt='' className='w-16 h-16 border' />
           <div>
             <p><strong>{detail.title}</strong></p>
@@ -73,6 +73,7 @@ export default function Map ({ center, offers = [] }) {
         defaultZoom={6}
         options={{
           fullscreenControl: false,
+          scrollwheel: true,
           styles
         }}
         yesIWantToUseGoogleMapApiInternals
@@ -133,6 +134,7 @@ export default function Map ({ center, offers = [] }) {
             >
               <span
                 title={cluster.title}
+                className='cursor-default'
                 onClick={() => {
                   setDetail(cluster)
                 }}
