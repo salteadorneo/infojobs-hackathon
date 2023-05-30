@@ -1,21 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRoute } from 'wouter'
 import { provincesByPopularity } from '../consts'
 
-export default function Search () {
+// eslint-disable-next-line react/prop-types
+export default function Search ({ provinces = [] }) {
   const [, params] = useRoute('/:province')
 
   const [province, setProvince] = useState(params?.province ?? 'espana')
-  const [provinces, setProvinces] = useState([])
 
   const queryString = window.location.search
   const sp = new URLSearchParams(queryString)
-
-  useEffect(() => {
-    fetch('/api/provinces').then((res) => res.json()).then((data) => {
-      setProvinces(data)
-    })
-  }, [])
 
   function handleSearch (e) {
     e.preventDefault()
