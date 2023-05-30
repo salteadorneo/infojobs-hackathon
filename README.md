@@ -2,6 +2,10 @@
 
 Geolocalización de ofertas de empleo presenciales de InfoJobs con mapa interactivo.
 
-Desarrollado con API de InfoJobs (https://developer.infojobs.net/) y Geoapify (https://www.geoapify.com/).
+Desarrollado con API de InfoJobs (https://developer.infojobs.net/) y Geoapify (https://www.geoapify.com/). Siguiendo la línea de estilo y cuidando el [rendimiento](#informe-lighthouse).
 
-![Captura web mapa ofertas de trabajo InfoJobs](https://github.com/salteadorneo/infojobs-hackathon/assets/4882454/d0cd362a-847b-48b1-a1a7-ddf5a1c48139)
+![Captura web mapa ofertas de trabajo InfoJobs](https://github.com/salteadorneo/infojobs-hackathon/assets/4882454/60065961-e7d2-4149-9488-7ae561c2167e)
+
+## Informe Lighthouse
+
+![image](https://github.com/salteadorneo/infojobs-hackathon/assets/4882454/1aa733c5-502e-4a9e-9584-622b2d88c6c3)
