@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import Map from '../components/Map'
 
+import citiesJSON from '../data/cities.json'
+
 const GEOAPIFY_API = import.meta.env.VITE_GEOAPIFY_API
 
 // eslint-disable-next-line react/prop-types
@@ -36,20 +38,8 @@ export default function Province ({ params }) {
     if (province === 'espana') province = ''
 
     if (province) {
-      const localStorageCities = localStorage.getItem('cities') ? JSON.parse(localStorage.getItem('cities')) : []
-
-      if (localStorageCities.includes(province)) {
-        const { lat, lng } = JSON.parse(localStorage.getItem(province)) || { lat: 0, lng: 0 }
-        setCenter({ lat, lng })
-      } else {
-        const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${province},Spain&apiKey=${GEOAPIFY_API}`).then((res) => res.json())
-
-        const { lat, lon } = response.features[0].properties
-        setCenter({ lat, lng: lon })
-
-        localStorage.setItem(province, JSON.stringify({ lat, lng: lon }))
-        localStorage.setItem('cities', JSON.stringify([...localStorageCities, province]))
-      }
+      const { lat, lng } = await getLatLon(`${province}, Spain`)
+      setCenter({ lat, lng })
     }
 
     const url = new URL('/api/offers', window.location.origin)
@@ -67,27 +57,42 @@ export default function Province ({ params }) {
     const uniqueCities = [...new Set(cities)]
 
     for (const city of uniqueCities) {
-      const localStorageCities = localStorage.getItem('cities') ? JSON.parse(localStorage.getItem('cities')) : []
-
-      if (localStorageCities.includes(city)) {
-        const { lat, lng } = JSON.parse(localStorage.getItem(city)) || { lat: 0, lng: 0 }
-        saveLocation(offers, city, lat, lng)
-        continue
-      }
-
-      const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${city}&apiKey=${GEOAPIFY_API}`).then((res) => res.json())
-      const { lat, lon: lng } = response.features?.[0]?.properties || { lat: 0, lon: 0 }
+      const { lat, lng } = await getLatLon(city)
       saveLocation(offers, city, lat, lng)
-
-      localStorage.setItem(city, JSON.stringify({ lat, lng }))
-      localStorage.setItem('cities', JSON.stringify([...localStorageCities, city]))
     }
 
     setOffers(prev => [...prev, ...offers])
 
-    if (offers.length > 0 && page < 5) {
+    if (offers.length > 0 && page < 4) {
       setPage(page + 1)
     }
+  }
+
+  async function getLatLon (name) {
+    const dataJson = citiesJSON?.find(item => item.name === name)
+    if (dataJson) {
+      const { lat, lng } = dataJson
+      return { lat, lng }
+    }
+
+    const localStorageCities = localStorage.getItem('cities') ? JSON.parse(localStorage.getItem('cities')) : []
+    const localData = localStorageCities.find(item => item.name === name)
+    if (localData) {
+      const { lat, lng } = localData || { lat: 0, lng: 0 }
+      return { lat, lng }
+    }
+
+    const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${name}&apiKey=${GEOAPIFY_API}`).then((res) => res.json())
+    const { lat, lon: lng } = response.features?.[0]?.properties || { lat: 0, lon: 0 }
+    localStorage.setItem('cities', JSON.stringify([
+      ...localStorageCities,
+      {
+        name,
+        lat,
+        lng
+      }
+    ]))
+    return { lat, lng }
   }
 
   function saveLocation (offers, city, lat, lng) {

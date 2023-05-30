@@ -63,7 +63,7 @@ export default function Search () {
                   value={province}
                   onChange={(e) => setProvince(e.target.value)}
                 >
-                  <option value='0'>Toda España</option>
+                  <option value='espana'>Toda España</option>
                   <optgroup label='Más comunes'>
                     {provincesByPopularity.map((province) => (
                       <option key={province.key} value={province.key}>{province.value}</option>
