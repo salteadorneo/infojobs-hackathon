@@ -7,7 +7,7 @@ import Loader from './Loader'
 const DEFAULT_IMAGE = 'https://components.infojobs.com/statics/images/pic-company-logo.png'
 
 // eslint-disable-next-line react/prop-types
-export default function Map ({ center, offers = [] }) {
+export default function Map ({ center, offers = [], loading }) {
   const mapRef = useRef()
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
@@ -62,7 +62,7 @@ export default function Map ({ center, offers = [] }) {
           </div>
         </a>
       )}
-      {offers.length === 0 && (
+      {loading && (
         <div className='absolute inset-0 grid place-content-center w-full h-full z-20 bg-white/50'>
           <Loader />
         </div>

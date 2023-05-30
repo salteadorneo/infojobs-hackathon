@@ -1,3 +1,5 @@
+export const LIMIT_PAGE_OFFERS = 4
+
 export const provincesByPopularity = [
   {
     key: 'madrid',

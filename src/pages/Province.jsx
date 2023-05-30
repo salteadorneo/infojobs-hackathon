@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Map from '../components/Map'
 
 import citiesJSON from '../data/cities.json'
+import { LIMIT_PAGE_OFFERS } from '../consts'
 
 const GEOAPIFY_API = import.meta.env.VITE_GEOAPIFY_API
 
@@ -12,6 +13,8 @@ export default function Province ({ params }) {
 
   const queryString = window.location.search
   const sp = new URLSearchParams(queryString)
+
+  const [loading, setLoading] = useState(false)
 
   const [offers, setOffers] = useState([])
 
@@ -36,6 +39,8 @@ export default function Province ({ params }) {
     if (province === '') return
 
     if (province === 'espana') province = ''
+
+    setLoading(true)
 
     if (province) {
       const { lat, lng } = await getLatLon(`${province}, Spain`)
@@ -63,8 +68,12 @@ export default function Province ({ params }) {
 
     setOffers(prev => [...prev, ...offers])
 
-    if (offers.length > 0 && page < 4) {
+    if (offers.length > 0 && page < LIMIT_PAGE_OFFERS) {
       setPage(page + 1)
+    }
+
+    if (offers.length === 0 || page === LIMIT_PAGE_OFFERS) {
+      setLoading(false)
     }
   }
 
@@ -111,7 +120,7 @@ export default function Province ({ params }) {
     <>
       <h2 className='mb-4'>{offers.length} ofertas {sp.get('q') ? `de ${sp.get('q')}` : ''} en <span className='capitalize'>{province}</span></h2>
       <div style={{ height: '600px', width: '100%' }} className='relative rounded-[6px] overflow-hidden'>
-        <Map center={center} offers={offers} />
+        <Map center={center} offers={offers} loading={loading} />
       </div>
     </>
   )
