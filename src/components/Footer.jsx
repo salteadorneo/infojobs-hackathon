@@ -1,6 +1,5 @@
 import { GitHub } from './GitHub'
 
-// eslint-disable-next-line react/prop-types
 export default function Footer ({ provinces = [] }) {
   return (
     <footer className='max-w-[1280px] mx-auto p-6'>

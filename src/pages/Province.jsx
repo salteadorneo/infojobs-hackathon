@@ -6,9 +6,7 @@ import { LIMIT_PAGE_OFFERS } from '../consts'
 
 const GEOAPIFY_API = import.meta.env.VITE_GEOAPIFY_API
 
-// eslint-disable-next-line react/prop-types
 export default function Province ({ params }) {
-  // eslint-disable-next-line react/prop-types
   const { title, province } = params
 
   const queryString = window.location.search
@@ -26,13 +24,11 @@ export default function Province ({ params }) {
     if (page > 1) {
       getOffers({ province, page })
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
   useEffect(() => {
     setOffers([])
     getOffers({ province })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [province])
 
   async function getOffers ({ province, page = 1 }) {
@@ -81,7 +77,6 @@ export default function Province ({ params }) {
     const dataJson = citiesJSON?.find(item => item.name === name)
     if (dataJson) {
       const { lat, lng } = dataJson
-      console.log('dataJson', dataJson)
       return { lat, lng }
     }
 
@@ -89,13 +84,11 @@ export default function Province ({ params }) {
     const localData = localStorageCities.find(item => item.name === name)
     if (localData) {
       const { lat, lng } = localData
-      console.log('localData', localData)
       return { lat, lng }
     }
 
     const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${name}&apiKey=${GEOAPIFY_API}`).then((res) => res.json())
     const { lat, lon: lng } = response.features?.[0]?.properties || { lat: 0, lon: 0 }
-    console.log('response', response)
     localStorage.setItem('cities', JSON.stringify([
       ...localStorageCities,
       {

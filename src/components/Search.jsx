@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useRoute } from 'wouter'
 import { provincesByPopularity } from '../consts'
 
-// eslint-disable-next-line react/prop-types
 export default function Search ({ provinces = [] }) {
   const [, params] = useRoute('/:province')
 
