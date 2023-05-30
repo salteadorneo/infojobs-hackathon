@@ -9,7 +9,7 @@ const GEOAPIFY_API = import.meta.env.VITE_GEOAPIFY_API
 // eslint-disable-next-line react/prop-types
 export default function Province ({ params }) {
   // eslint-disable-next-line react/prop-types
-  const { province } = params
+  const { title, province } = params
 
   const queryString = window.location.search
   const sp = new URLSearchParams(queryString)
@@ -81,18 +81,21 @@ export default function Province ({ params }) {
     const dataJson = citiesJSON?.find(item => item.name === name)
     if (dataJson) {
       const { lat, lng } = dataJson
+      console.log('dataJson', dataJson)
       return { lat, lng }
     }
 
     const localStorageCities = localStorage.getItem('cities') ? JSON.parse(localStorage.getItem('cities')) : []
     const localData = localStorageCities.find(item => item.name === name)
     if (localData) {
-      const { lat, lng } = localData || { lat: 0, lng: 0 }
+      const { lat, lng } = localData
+      console.log('localData', localData)
       return { lat, lng }
     }
 
     const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${name}&apiKey=${GEOAPIFY_API}`).then((res) => res.json())
     const { lat, lon: lng } = response.features?.[0]?.properties || { lat: 0, lon: 0 }
+    console.log('response', response)
     localStorage.setItem('cities', JSON.stringify([
       ...localStorageCities,
       {
@@ -116,9 +119,17 @@ export default function Province ({ params }) {
     })
   }
 
+  function capitalize (str) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
+
   return (
     <>
-      <h2 className='mb-4'>{offers.length} ofertas {sp.get('q') ? `de ${sp.get('q')}` : ''} en <span className='capitalize'>{province}</span></h2>
+      <h2 className='mb-4'>
+        {title || (
+        `${offers.length} ofertas ${sp.get('q') ? `de ${sp.get('q')}` : ''} en ${capitalize(province)}`
+        )}
+      </h2>
       <div style={{ height: '600px', width: '100%' }} className='relative rounded-[6px] overflow-hidden'>
         <Map center={center} offers={offers} loading={loading} />
       </div>

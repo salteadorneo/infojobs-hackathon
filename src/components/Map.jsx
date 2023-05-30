@@ -52,7 +52,7 @@ export default function Map ({ center, offers = [], loading }) {
   return (
     <>
       {detail && (
-        <a href={detail.link} target='_blank' className='absolute top-2 left-2 z-10 shadow-lg w-full max-w-md bg-white p-4 rounded flex gap-4' rel='noreferrer'>
+        <a href={detail.link} target='_blank' className='absolute top-2 left-2 z-10 shadow-lg w-full max-w-md bg-white hover:bg-[#f3f9fb] p-4 rounded flex gap-4' rel='noreferrer'>
           <img src={detail.author?.logoUrl || DEFAULT_IMAGE} alt='' className='w-16 h-16 border' />
           <div>
             <p><strong>{detail.title}</strong></p>

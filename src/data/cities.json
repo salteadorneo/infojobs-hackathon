@@ -1068,5 +1068,365 @@
         "name": "Orkoien, Navarra, Spain",
         "lat": 42.8234903,
         "lng": -1.7022679
+    },
+    {
+        "name": "La Riera de Gaià, Tarragona, Spain",
+        "lat": 41.1686281,
+        "lng": 1.3582853
+    },
+    {
+        "name": "Etxebarri, Vizcaya/Bizkaia, Spain",
+        "lat": 43.2474168,
+        "lng": -2.8897724
+    },
+    {
+        "name": "Lelystad, Flevoland, Spain",
+        "lat": 0,
+        "lng": 0
+    },
+    {
+        "name": "Úbeda, Jaén, Spain",
+        "lat": 38.0111398,
+        "lng": -3.3719098
+    },
+    {
+        "name": "Ferreries, Islas Baleares/Illes Balears, Spain",
+        "lat": 39.983348,
+        "lng": 4.0109465
+    },
+    {
+        "name": "Amposta, Tarragona, Spain",
+        "lat": 40.7079905,
+        "lng": 0.5827636
+    },
+    {
+        "name": "Ceuta, Ceuta, Spain",
+        "lat": 35.89442195,
+        "lng": -5.355817352394269
+    },
+    {
+        "name": "Manacor, Islas Baleares/Illes Balears, Spain",
+        "lat": 39.551392,
+        "lng": 3.2382642
+    },
+    {
+        "name": "Benissa, Alicante/Alacant, Spain",
+        "lat": 38.7163735,
+        "lng": 0.0534016
+    },
+    {
+        "name": "Ingenio, Las Palmas, Spain",
+        "lat": 27.9183781,
+        "lng": -15.4357949
+    },
+    {
+        "name": "Petrer, Alicante/Alacant, Spain",
+        "lat": 38.485008,
+        "lng": -0.7703987
+    },
+    {
+        "name": "Oleiros, A Coruña, Spain",
+        "lat": 43.3507142,
+        "lng": -8.3294374
+    },
+    {
+        "name": "Canyelles, Barcelona, Spain",
+        "lat": 41.2858273,
+        "lng": 1.7222743
+    },
+    {
+        "name": "Alhama de Murcia, Murcia, Spain",
+        "lat": 37.8515145,
+        "lng": -1.4251045
+    },
+    {
+        "name": "Ponteareas, Pontevedra, Spain",
+        "lat": 42.1740961,
+        "lng": -8.5050963
+    },
+    {
+        "name": "Alcúdia, Islas Baleares/Illes Balears, Spain",
+        "lat": 39.8532473,
+        "lng": 3.1212505
+    },
+    {
+        "name": "Hernani, Guipúzcoa/Gipuzkoa, Spain",
+        "lat": 43.2661107,
+        "lng": -1.9747419
+    },
+    {
+        "name": "San Javier, Murcia, Spain",
+        "lat": 37.8059567,
+        "lng": -0.8345537
+    },
+    {
+        "name": "Tolosa, Guipúzcoa/Gipuzkoa, Spain",
+        "lat": 43.1386097,
+        "lng": -2.0723558
+    },
+    {
+        "name": "Aguilar de la Frontera, Córdoba, Spain",
+        "lat": 37.5146967,
+        "lng": -4.6567166
+    },
+    {
+        "name": "Puertollano, Ciudad Real, Spain",
+        "lat": 38.6852161,
+        "lng": -4.1111749
+    },
+    {
+        "name": "Pastrana, Guadalajara, Spain",
+        "lat": 40.4178968,
+        "lng": -2.9225859
+    },
+    {
+        "name": "Zona A-5, Madrid, Spain",
+        "lat": 40.4167047,
+        "lng": -3.7035825
+    },
+    {
+        "name": "Leioa, Vizcaya/Bizkaia, Spain",
+        "lat": 43.3271048,
+        "lng": -2.9846079
+    },
+    {
+        "name": "Bunyola, Islas Baleares/Illes Balears, Spain",
+        "lat": 39.6961887,
+        "lng": 2.6989574
+    },
+    {
+        "name": "Legutiano, Álava/Araba, Spain",
+        "lat": 42.9794699,
+        "lng": -2.6408374
+    },
+    {
+        "name": "Tomelloso, Ciudad Real, Spain",
+        "lat": 39.1585549,
+        "lng": -3.0214851
+    },
+    {
+        "name": "Iruña Oka/Iruña de Oca, Álava/Araba, Spain",
+        "lat": 42.824644199999994,
+        "lng": -2.820600570208913
+    },
+    {
+        "name": "Illescas, Toledo, Spain",
+        "lat": 40.1248436,
+        "lng": -3.8492688
+    },
+    {
+        "name": "Benidorm, Alicante/Alacant, Spain",
+        "lat": 38.5406255,
+        "lng": -0.1290929
+    },
+    {
+        "name": "Mont-Ras, Girona, Spain",
+        "lat": 41.9080196,
+        "lng": 3.144796
+    },
+    {
+        "name": "Aranda de Duero, Burgos, Spain",
+        "lat": 41.6715067,
+        "lng": -3.6851172
+    },
+    {
+        "name": "Alcoletge, Lleida, Spain",
+        "lat": 41.6479039,
+        "lng": 0.6945376502293068
+    },
+    {
+        "name": "Navàs, Barcelona, Spain",
+        "lat": 41.8989233,
+        "lng": 1.8767736
+    },
+    {
+        "name": "Lasarte-Oria, Guipúzcoa/Gipuzkoa, Spain",
+        "lat": 43.2684642,
+        "lng": -2.0193784
+    },
+    {
+        "name": "Torremejía, Badajoz, Spain",
+        "lat": 38.7896931,
+        "lng": -6.3763014
+    },
+    {
+        "name": "La Roca del Vallès, Barcelona, Spain",
+        "lat": 41.5873365,
+        "lng": 2.3260575
+    },
+    {
+        "name": "Zaratamo, Vizcaya/Bizkaia, Spain",
+        "lat": 43.211818,
+        "lng": -2.873426
+    },
+    {
+        "name": "Alberic, Valencia/València, Spain",
+        "lat": 39.1164369,
+        "lng": -0.5201838
+    },
+    {
+        "name": "Oroso, A Coruña, Spain",
+        "lat": 42.9868013,
+        "lng": -8.384974
+    },
+    {
+        "name": "Logroño, La Rioja, Spain",
+        "lat": 42.4661196,
+        "lng": -2.4396676
+    },
+    {
+        "name": "Palma de Mallorca, Islas Baleares/Illes Balears, Spain",
+        "lat": 39.5695818,
+        "lng": 2.6500745
+    },
+    {
+        "name": "El Campello, Alicante/Alacant, Spain",
+        "lat": 38.427416,
+        "lng": -0.3983685
+    },
+    {
+        "name": "Erandio, Vizcaya/Bizkaia, Spain",
+        "lat": 43.3055981,
+        "lng": -2.9729697
+    },
+    {
+        "name": "Tordera, Barcelona, Spain",
+        "lat": 41.6977173,
+        "lng": 2.7172987
+    },
+    {
+        "name": "Vera, Almería, Spain",
+        "lat": 37.2475942,
+        "lng": -1.8681961
+    },
+    {
+        "name": "Dénia, Alicante/Alacant, Spain",
+        "lat": 38.8408382,
+        "lng": 0.1061105
+    },
+    {
+        "name": "Zamora, Zamora, Spain",
+        "lat": 41.5056574,
+        "lng": -5.7448039
+    },
+    {
+        "name": "A Coruña, A Coruña, Spain",
+        "lat": 43.3709703,
+        "lng": -8.3959425
+    },
+    {
+        "name": "Arganda del Rey, Madrid, Spain",
+        "lat": 40.3007708,
+        "lng": -3.4380688
+    },
+    {
+        "name": "Santiago de Compostela, A Coruña, Spain",
+        "lat": 42.9057312,
+        "lng": -8.517517
+    },
+    {
+        "name": "Cabanillas del Campo, Guadalajara, Spain",
+        "lat": 40.6372767,
+        "lng": -3.2364049
+    },
+    {
+        "name": "San Bartolomé de Tirajana, Las Palmas, Spain",
+        "lat": 27.9252512,
+        "lng": -15.5729983
+    },
+    {
+        "name": "Lugo, Lugo, Spain",
+        "lat": 43.0118437,
+        "lng": -7.5565749
+    },
+    {
+        "name": "Vigo, Pontevedra, Spain",
+        "lat": 42.1964491,
+        "lng": -8.7117809
+    },
+    {
+        "name": "L'Alfàs del Pi, Alicante/Alacant, Spain",
+        "lat": 38.5786027,
+        "lng": -0.1006738
+    },
+    {
+        "name": "Guadalajara, Guadalajara, Spain",
+        "lat": 40.6326979,
+        "lng": -3.1646067
+    },
+    {
+        "name": "Ávila, Ávila, Spain",
+        "lat": 40.656478,
+        "lng": -4.7002172
+    },
+    {
+        "name": "Torrejón de la Calzada, Madrid, Spain",
+        "lat": 40.2006804,
+        "lng": -3.7993298
+    },
+    {
+        "name": "Eivissa, Islas Baleares/Illes Balears, Spain",
+        "lat": 38.9101137,
+        "lng": 1.4302823
+    },
+    {
+        "name": "Pontevedra, Pontevedra, Spain",
+        "lat": 42.4318876,
+        "lng": -8.6431592
+    },
+    {
+        "name": "Avilés, Asturias, Spain",
+        "lat": 43.5554436,
+        "lng": -5.9222466
+    },
+    {
+        "name": "Lorca, Murcia, Spain",
+        "lat": 37.6712139,
+        "lng": -1.6990431
+    },
+    {
+        "name": "El Port de la Selva, Girona, Spain",
+        "lat": 42.3373159,
+        "lng": 3.2047232
+    },
+    {
+        "name": "Toledo, Toledo, Spain",
+        "lat": 39.8625625,
+        "lng": -4.0108266
+    },
+    {
+        "name": "Fontcoberta, Girona, Spain",
+        "lat": 42.1425379,
+        "lng": 2.7897817
+    },
+    {
+        "name": "Humanes de Madrid, Madrid, Spain",
+        "lat": 40.4167047,
+        "lng": -3.7035825
+    },
+    {
+        "name": "Lorquí, Murcia, Spain",
+        "lat": 38.0815272,
+        "lng": -1.2536182
+    },
+    {
+        "name": "Ciutadella de Menorca, Islas Baleares/Illes Balears, Spain",
+        "lat": 40.00299755,
+        "lng": 3.8614810595640465
+    },
+    {
+        "name": "Formentera, Islas Baleares/Illes Balears, Spain",
+        "lat": 28.087561,
+        "lng": -15.417975
+    },
+    {
+        "name": "Fuentes de Valdepero, Palencia, Spain",
+        "lat": 42.0749607,
+        "lng": -4.5005124
+    },
+    {
+        "name": "Lloret de Mar, Girona, Spain",
+        "lat": 41.6973503,
+        "lng": 2.8392392
     }
 ]
