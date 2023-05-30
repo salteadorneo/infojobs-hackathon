@@ -109,7 +109,7 @@ export default function Province ({ params }) {
 
   return (
     <>
-      <h2 className='mb-4'>{offers.length} ofertas en <span className='capitalize'>{province}</span></h2>
+      <h2 className='mb-4'>{offers.length} ofertas {sp.get('q') ? `de ${sp.get('q')}` : ''} en <span className='capitalize'>{province}</span></h2>
       <div style={{ height: '600px', width: '100%' }} className='relative rounded-[6px] overflow-hidden'>
         <Map center={center} offers={offers} />
       </div>
