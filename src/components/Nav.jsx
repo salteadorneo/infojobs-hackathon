@@ -9,22 +9,22 @@ export default function Nav () {
         </a>
       </li>
       <li className='max-sm:hidden'>
-        <a href='#' id='menu_tab_25' title='Buscar empleo' data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}' data-track='Search Offers Main Menu Clicked'>
+        <a href='#' title='Buscar empleo'>
           Buscar empleo
         </a>
       </li>
       <li className='max-sm:hidden'>
-        <a href='#' id='menu_tab_33' title='Buscar empresas' data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}' data-track='Search Companies Main Menu Clicked'>
+        <a href='#' title='Buscar empresas'>
           Buscar empresas
         </a>
       </li>
       <li className='max-sm:hidden'>
-        <a href='#' id='menu_tab_34' title='Salarios' data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}' data-track='Salary Main Menu Clicked'>
+        <a href='#' title='Salarios'>
           Salarios
         </a>
       </li>
       <li className='max-sm:hidden'>
-        <a href='#' id='menu_tab_2' title='Qué puedo estudiar para trabajar - Formación InfoJobs' data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}' data-track='Training Main Menu Clicked'>
+        <a href='#' title='Qué puedo estudiar para trabajar - Formación InfoJobs'>
           Formación
         </a>
       </li>

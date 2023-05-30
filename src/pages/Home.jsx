@@ -5,7 +5,9 @@ import Province from './Province'
 export default function Home () {
   return (
     <>
-      <h2 className='text-xl font-semibold mb-4'>Ciudades con más ofertas de empleo</h2>
+      <h2 className='text-xl font-semibold mb-4'>
+        Ciudades con más ofertas de empleo
+      </h2>
       <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
         {provincesByPopularity.map((province) => (
           <Link href={`/${province.key}`} key={province.key} className='group space-y-2'>
@@ -14,7 +16,9 @@ export default function Home () {
           </Link>
         ))}
       </div>
-      <h2 className='text-xl font-semibold mb-4 mt-8'>Últimas ofertas de empleo en España</h2>
+      <h2 className='text-xl font-semibold mb-4 mt-8'>
+        Últimas ofertas de empleo en España
+      </h2>
       <Province params={{ province: 'espana', title: ' ' }} />
     </>
   )

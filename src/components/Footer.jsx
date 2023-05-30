@@ -4,7 +4,9 @@ export default function Footer ({ provinces = [] }) {
   return (
     <footer className='max-w-[1280px] mx-auto p-6'>
 
-      <h3 className='text-xl font-semibold mb-4'>Empleo por provincias</h3>
+      <h3 className='text-xl font-semibold mb-4'>
+        Empleo por provincias
+      </h3>
       <ul className='grid grid-cols-4'>
         {provinces.filter(p => p.key !== 'seleccionar').map((province) => (
           <li key={province.key} className='leading-none mb-1.5'>

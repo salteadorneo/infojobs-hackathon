@@ -51,7 +51,6 @@ export default function Search ({ provinces = [] }) {
                 <label htmlFor='of_provincia' className='block text-white'>en...</label>
                 <select
                   className='w-full p-2'
-                  data-placeholder='Toda España'
                   title='Selecciona una de las opciones o escribe tu opción'
                   value={province}
                   onChange={(e) => setProvince(e.target.value)}
@@ -74,8 +73,6 @@ export default function Search ({ provinces = [] }) {
                   type='submit'
                   className='text-white bg-[#ff6340] rounded px-10 py-2 uppercase'
                   title='Buscar trabajo con mis preferencias'
-                  data-track-properties='{&quot;section&quot;:&quot;candidate&quot;}'
-                  data-track='Search Offers Clicked'
                 >
                   Buscar
                 </button>
