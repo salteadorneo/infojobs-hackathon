@@ -2,4 +2,4 @@
 
 Geolocalización de ofertas de empleo presenciales de InfoJobs sobre mapa interactivo.
 
-![Captura web mapa ofertas de trabajo InfoJobs](https://github.com/salteadorneo/infojobs-hackathon/assets/4882454/4fffdf14-d4b3-44f8-9987-c0745facab95)
+![Captura web mapa ofertas de trabajo InfoJobs](https://github.com/salteadorneo/infojobs-hackathon/assets/4882454/d0cd362a-847b-48b1-a1a7-ddf5a1c48139)
