@@ -25,8 +25,8 @@ export default function Search ({ provinces = [] }) {
   }
   return (
     <div className='py-2 mt-11'>
-      <h1 className='text-[42px] font-medium mb-4'>Trabaja cerca de casa</h1>
-      <div className='rounded-[6px] bg-[rgba(22,125,183,0.7)] p-8'>
+      <h1 className='text-[42px] leading-none font-medium mb-4'>Trabaja cerca de casa</h1>
+      <div className='rounded-[6px] bg-[#167db7b3] p-8'>
         <form onSubmit={handleSearch}>
           <fieldset>
             <ul className='flex flex-col sm:flex-row items-end gap-2'>
