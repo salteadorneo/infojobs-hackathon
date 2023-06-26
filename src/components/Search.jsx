@@ -61,11 +61,13 @@ export default function Search ({ provinces = [] }) {
                       <option key={province.key} value={province.key}>{province.value}</option>
                     ))}
                   </optgroup>
-                  <optgroup label='Todas'>
-                    {provinces.filter(p => p.key !== 'seleccionar').map((province) => (
-                      <option key={province.key} value={province.key}>{province.value}</option>
-                    ))}
-                  </optgroup>
+                  {provinces.length && (
+                    <optgroup label='Todas'>
+                      {provinces.filter(p => p.key !== 'seleccionar').map((province) => (
+                        <option key={province.key} value={province.key}>{province.value}</option>
+                      ))}
+                    </optgroup>
+                  )}
                 </select>
               </li>
               <li className=''>
