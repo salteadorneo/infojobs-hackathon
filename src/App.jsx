@@ -18,6 +18,14 @@ function App () {
 
   return (
     <>
+      <a
+        href='https://salteadorneo.dev/blog/infojobs-hackathon-midudev'
+        className='fixed right-0 bg-[#ff6340] hover:bg-[#ff6340]/70 text-white py-2 origin-top mt-9 mr-9 w-72 text-center translate-x-1/2 rotate-45'
+      >
+        <p className='font-bold'>3<sup>er</sup> premio</p>
+        <p className='text-xs'>InfoJobs Hackathon @midudev</p>
+      </a>
+
       <header className='py-7 bg-[#f2f2f2] bg-cover bg-center' style={{ backgroundImage: 'url(/bg-home-full-tv.jpg)' }}>
         <div className='max-w-[1280px] mx-auto px-6'>
           <Nav />
